@@ -65,7 +65,7 @@ public class MarkerScript : MonoBehaviour
                         int x = (int)(UV.x * whiteboard.whiteboardRes.x - (penSize / 2));
                         int y = (int)(UV.y * whiteboard.whiteboardRes.y - (penSize / 2));
 
-                        if (x >= 0 && x < whiteboard.whiteboardRes.x && y >= 0 && y < whiteboard.whiteboardRes.y)
+                        if (x >= penSize - 1 && x < whiteboard.whiteboardRes.x - (penSize - 1) && y >= penSize - 1 && y < whiteboard.whiteboardRes.y - (penSize - 1))
                         {
                             if (lastUV.x >= 0.0f && lastUV.y >= 0.0f)
                             {
