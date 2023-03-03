@@ -17,4 +17,10 @@ public class WhiteboardScript : MonoBehaviour
         render.material.mainTexture = whiteboardTex;
     }
 
+    public void clearWhiteboard()
+    {
+        if(whiteboardTex != null)
+            whiteboardTex.Reinitialize((int)whiteboardRes.x, (int)whiteboardRes.y, TextureFormat.RGBA32, false);
+    }
+
 }
