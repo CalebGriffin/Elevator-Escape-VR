@@ -19,8 +19,7 @@ public class WhiteboardScript : MonoBehaviour
 
     public void clearWhiteboard()
     {
-        if(whiteboardTex != null)
+        if (whiteboardTex != null)
             whiteboardTex.Reinitialize((int)whiteboardRes.x, (int)whiteboardRes.y, TextureFormat.RGBA32, false);
     }
-
 }

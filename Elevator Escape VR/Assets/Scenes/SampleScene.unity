@@ -992,6 +992,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbf2bf141adf8584b86c89e607d60d45, type: 3}
+--- !u!114 &1819310935 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8122709455626924484, guid: 8be5f05c00c46834d99807738b246074, type: 3}
+  m_PrefabInstance: {fileID: 470525185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80baa9864f4cb3f41a01c3e66b306fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1846010512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1846010514}
   - component: {fileID: 1846010513}
+  - component: {fileID: 1846010515}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1022,14 +1034,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountdownSegment: {fileID: 3934845867073530901}
-  elevatorLights:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  elevatorLights: {fileID: 1846010515}
   keypad: {fileID: 754121569}
   whiteboards:
   - {fileID: 1853711838}
-  - {fileID: 0}
+  - {fileID: 1819310935}
   - {fileID: 299338627}
 --- !u!4 &1846010514
 Transform:
@@ -1046,6 +1055,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1846010515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846010512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58ec2815c4b2f142b17bd9f4bff250f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elevatorLights:
+  - {fileID: 895757562}
+  - {fileID: 2118885682}
+  - {fileID: 1157822977}
 --- !u!114 &1853711838 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8122709455626924484, guid: 8be5f05c00c46834d99807738b246074, type: 3}

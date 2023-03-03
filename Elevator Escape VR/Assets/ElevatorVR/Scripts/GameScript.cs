@@ -13,7 +13,7 @@ public class GameScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI CountdownSegment;
 
     //Elevator lights for control.
-    [SerializeField] private List<Light> elevatorLights;
+    [SerializeField] private ElevatorLightScript elevatorLights;
 
     //Keypad to clear when resetting.
     [SerializeField] private KeypadScript keypad;
@@ -27,18 +27,23 @@ public class GameScript : MonoBehaviour
     private void ResetGame()
     {
 
-        Countdown = 60;
+        Countdown = 180;
         CountdownSegment.text = Countdown.ToString();
+
+        keypad.onClear();
 
         foreach (WhiteboardScript whiteboard in whiteboards)
             whiteboard.clearWhiteboard();
 
-        //Begin countdown of elevator tick, after cancelling any currently running coroutine.
+        //Begin countdown of elevator tick, after cancelling any currently running coroutines.
         if(ElevatorLoop != null)
             StopCoroutine(ElevatorLoop);
 
         ElevatorLoop = ElevatorTick();
         StartCoroutine(ElevatorLoop);
+
+        elevatorLights.resetLights();
+
     }
 
 
@@ -54,13 +59,15 @@ public class GameScript : MonoBehaviour
     void Update()
     {
         
+        
+
     }
 
 
     //This will handle logics of counting down while also changing the elevator's environment based on remaining countdown.
     IEnumerator ElevatorTick()
     {
-        while(Countdown > -1)
+        while(Countdown > 0)
         {
 
             yield return new WaitForSeconds(1);
@@ -68,17 +75,17 @@ public class GameScript : MonoBehaviour
             Countdown--;
             CountdownSegment.text = Countdown.ToString();
 
-        }
+            if(Countdown == 10)
+                elevatorLights.setFlicker(0.0f, 0.1f, 0.0f, 0.2f, Color.red, 0.1f);
+            else if (Countdown == 30)
+                elevatorLights.setFlicker(0.1f, 0.5f, 0.1f, 0.4f, Color.red, 0.2f);
+            else if (Countdown == 60)
+                elevatorLights.setFlicker(1.25f, 3.75f, 0.25f, 0.625f, new Color(1.0f, 0.7f, 0.0f), 0.3f);
+            else if (Countdown == 120)
+                elevatorLights.setFlicker(5.0f, 15.0f, 0.45f, 0.75f, Color.white, 0.4f);
+            else if(Countdown > 120)
+                elevatorLights.resetLights();
 
-    }
-
-    void setLights(Color lightColor, float intensity)
-    {
-
-        foreach (Light light in elevatorLights)
-        {
-            light.color = lightColor;
-            light.intensity = intensity;
         }
 
     }
