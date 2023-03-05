@@ -33,7 +33,32 @@ public class KeypadScript : MonoBehaviour
 
     public void onConfirm()
     {
-
+        if (KeypadSegment.text == GVar.Instance.chosenAnswers[GVar.Instance.questionsAnswered].ToString())
+        {
+            GVar.Instance.questionsAnswered++;
+            KeypadSegment.text = "Correct!";
+            if (GVar.Instance.questionsAnswered == 3)
+            {
+                // The player has answered all 3 questions correctly and the game is over.
+                // TODO: End the game by opening the elevator doors.
+            }
+            else
+            {
+                // The player answered correctly but there are still more questions to answer.
+                StartCoroutine(WaitToClear(2));
+            }
+        }
+        else
+        {
+            // The player answered incorrectly.
+            KeypadSegment.text = "Incorrect!";
+            StartCoroutine(WaitToClear());
+        }
     }
 
+    private IEnumerator WaitToClear(float waitTime = 1)
+    {
+        yield return new WaitForSeconds(waitTime);
+        onClear();
+    }
 }
