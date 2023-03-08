@@ -75,12 +75,12 @@ public class GameScript : MonoBehaviour
             Countdown--;
             CountdownSegment.text = Countdown.ToString();
 
-            if(Countdown == 10)
-                elevatorLights.setFlicker(0.0f, 0.1f, 0.0f, 0.2f, Color.red, 0.1f);
-            else if (Countdown == 30)
+            //if(Countdown == 10)
+            //    elevatorLights.setFlicker(0.0f, 0.1f, 0.0f, 0.2f, Color.red, 0.1f);
+            if (Countdown == 30)
                 elevatorLights.setFlicker(0.1f, 0.5f, 0.1f, 0.4f, Color.red, 0.2f);
             else if (Countdown == 60)
-                elevatorLights.setFlicker(1.25f, 3.75f, 0.25f, 0.625f, new Color(1.0f, 0.7f, 0.0f), 0.3f);
+                elevatorLights.setFlicker(1.25f, 3.75f, 0.25f, 0.625f, new Color(0.9f, 0.5f, 0.0f), 0.3f);
             else if (Countdown == 120)
                 elevatorLights.setFlicker(5.0f, 15.0f, 0.45f, 0.75f, Color.white, 0.4f);
             else if(Countdown > 120)
