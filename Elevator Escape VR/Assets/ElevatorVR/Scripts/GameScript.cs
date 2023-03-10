@@ -73,7 +73,9 @@ public class GameScript : MonoBehaviour
             yield return new WaitForSeconds(1);
 
             Countdown--;
-            CountdownSegment.text = Countdown.ToString();
+            string minutes = Mathf.Floor(Countdown / 60).ToString("00");
+            string seconds = (Countdown % 60).ToString("00");
+            CountdownSegment.text = minutes + ":" + seconds;
 
             //if(Countdown == 10)
             //    elevatorLights.setFlicker(0.0f, 0.1f, 0.0f, 0.2f, Color.red, 0.1f);
