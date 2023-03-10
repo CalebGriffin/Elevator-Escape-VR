@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestionPicker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Image[] questionImages;
 
-    // Update is called once per frame
-    void Update()
+    // Static instance so that this script can be accessed from anywhere.
+    public static QuestionPicker Instance { get; private set; }
+
+    void Awake()
     {
-        
+        // Ensure that there is only one instance of this script.
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
     // This will be called when the game starts.
@@ -32,12 +35,12 @@ public class QuestionPicker : MonoBehaviour
         QuestionData[] questions = new QuestionData[3];
         for (int i = 0; i < 3; i++)
         {
-            questions[i] = RandomQuestion(topics[i], GVar.Instance.chosenDifficulty);
+            questions[i] = RandomQuestion(topics[i], GVar.Instance.ChosenDifficulty);
         }
 
         // Assign the chosen questions and answers to the GVar script.
-        GVar.Instance.chosenQuestions = questions;
-        GVar.Instance.chosenAnswers = questions.Select(q => q.Answer).ToArray();
+        GVar.Instance.ChosenQuestions = questions;
+        GVar.Instance.ChosenAnswers = questions.Select(q => q.Answer).ToArray();
 
         // Setup the question images.
         SetupQuestionImages();
@@ -68,7 +71,7 @@ public class QuestionPicker : MonoBehaviour
         return randomTopic;
     }
 
-    QuestionData RandomQuestion(QuestionData.Topic topic, int difficulty)
+    QuestionData RandomQuestion(QuestionData.Topic topic, QuestionData.Difficulty difficulty)
     {
         // Filter the questions array to only include questions with the given topic.
         QuestionData[] topicQuestions = GVar.Instance.AllQuestions.Where(q => q.QuestionTopic == topic).ToArray();
@@ -82,6 +85,9 @@ public class QuestionPicker : MonoBehaviour
 
     private void SetupQuestionImages()
     {
-        // TODO: Create canvas images for each question and assign the question images to them.
+        for (int i = 0; i < questionImages.Length; i++)
+        {
+            questionImages[i].sprite = GVar.Instance.ChosenQuestions[i].QuestionImage;
+        }
     }
 }

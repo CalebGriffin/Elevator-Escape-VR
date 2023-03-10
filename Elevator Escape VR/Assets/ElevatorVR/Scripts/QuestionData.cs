@@ -23,6 +23,12 @@ public class QuestionData : ScriptableObject
     [SerializeField] private Topic questionTopic;
     public Topic QuestionTopic => questionTopic;
 
-    [SerializeField] private int questionDifficulty;
-    public int QuestionDifficulty => questionDifficulty;
+    // This enum is used to categorize questions into difficulty levels.
+    public enum Difficulty
+    {
+        A, B, C, D
+    }
+
+    [SerializeField] private Difficulty questionDifficulty;
+    public Difficulty QuestionDifficulty => questionDifficulty;
 }

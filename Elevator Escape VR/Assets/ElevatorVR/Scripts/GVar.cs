@@ -17,11 +17,12 @@ public class GVar : MonoBehaviour
     [SerializeField] private QuestionData[] allQuestions;
     public QuestionData[] AllQuestions => allQuestions;
 
-    public QuestionData[] chosenQuestions;
+    // TODO: Hide all of these from the inspector.
+    public QuestionData[] ChosenQuestions;
 
-    public int[] chosenAnswers;
+    public int[] ChosenAnswers;
 
-    public int chosenDifficulty;
+    public QuestionData.Difficulty ChosenDifficulty;
 
-    public int questionsAnswered = 0;
+    public int QuestionsAnswered = 0;
 }

@@ -31,13 +31,21 @@ public class KeypadScript : MonoBehaviour
         KeypadSegment.text = "";
     }
 
+    public void onBackspace()
+    {
+        if (KeypadSegment.text.Length > 0)
+        {
+            KeypadSegment.text = KeypadSegment.text.Substring(0, KeypadSegment.text.Length - 1);
+        }
+    }
+
     public void onConfirm()
     {
-        if (KeypadSegment.text == GVar.Instance.chosenAnswers[GVar.Instance.questionsAnswered].ToString())
+        if (KeypadSegment.text == GVar.Instance.ChosenAnswers[GVar.Instance.QuestionsAnswered].ToString())
         {
-            GVar.Instance.questionsAnswered++;
+            GVar.Instance.QuestionsAnswered++;
             KeypadSegment.text = "Correct!";
-            if (GVar.Instance.questionsAnswered == 3)
+            if (GVar.Instance.QuestionsAnswered == 3)
             {
                 // The player has answered all 3 questions correctly and the game is over.
                 // TODO: End the game by opening the elevator doors.
