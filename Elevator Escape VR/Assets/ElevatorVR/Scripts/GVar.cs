@@ -27,6 +27,8 @@ public class GVar : MonoBehaviour
 
     public int QuestionsAnswered = 0;
 
+    public ScoreData ScoreData;
+
     private void Start()
     {
         string[] assetNames = AssetDatabase.FindAssets("t:QuestionData", new[] {"Assets/ElevatorVR/Questions"});
