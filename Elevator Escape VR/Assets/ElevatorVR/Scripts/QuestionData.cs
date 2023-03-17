@@ -17,8 +17,8 @@ public class QuestionData : ScriptableObject
     [SerializeField] private Sprite questionImage;
     public Sprite QuestionImage => questionImage;
 
-    [SerializeField] private int answer;
-    public int Answer => answer;
+    [SerializeField] private string answer;
+    public string Answer => answer;
 
     [SerializeField] private Topic questionTopic;
     public Topic QuestionTopic => questionTopic;

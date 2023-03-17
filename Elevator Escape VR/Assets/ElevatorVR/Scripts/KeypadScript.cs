@@ -41,7 +41,7 @@ public class KeypadScript : MonoBehaviour
 
     public void onConfirm()
     {
-        if (KeypadSegment.text == GVar.Instance.ChosenAnswers[GVar.Instance.QuestionsAnswered].ToString())
+        if (KeypadSegment.text == GVar.Instance.ChosenAnswers[GVar.Instance.QuestionsAnswered])
         {
             GVar.Instance.QuestionsAnswered++;
             KeypadSegment.text = "Correct!";
