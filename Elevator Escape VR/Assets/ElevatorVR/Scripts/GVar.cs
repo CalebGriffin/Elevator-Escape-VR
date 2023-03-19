@@ -29,8 +29,18 @@ public class GVar : MonoBehaviour
 
     private void Start()
     {
-        string[] assetNames = AssetDatabase.FindAssets("t:QuestionData", new[] {"Assets/ElevatorVR/Questions"});
         allQuestions.Clear();
+
+        string[] folderPaths = AssetDatabase.GetSubFolders("Assets/ElevatorVR/Questions");
+        foreach (string folderPath in folderPaths)
+        {
+            GetQuestionAssets(folderPath);
+        }
+    }
+
+    private void GetQuestionAssets(string folderPath)
+    {
+        string[] assetNames = AssetDatabase.FindAssets("t:QuestionData", new[] {folderPath});
         foreach (string SOName in assetNames)
         {
             var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
