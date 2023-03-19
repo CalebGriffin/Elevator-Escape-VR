@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87b4d5b8f7124f8a90b6bf039a0d2cf, type: 3}
   m_Name: C_4_1
   m_EditorClassIdentifier: 
-  questionImage: {fileID: 0}
-  answer: 
+  questionImage: {fileID: 21300000, guid: db085ca98876c439f9241c301f88ff5a, type: 3}
+  answer: 5,-2
   questionTopic: 0
-  questionDifficulty: 0
+  questionDifficulty: 2
