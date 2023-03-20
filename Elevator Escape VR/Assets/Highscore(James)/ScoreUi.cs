@@ -5,22 +5,16 @@ using System.Linq;
 
 public class ScoreUi : MonoBehaviour
 {
-    public RowUi rowUi;
+    public GameObject rowUi;
     public ScoreManager scoreManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        scoreManager.AddScore(new Score("eran", 6));
-        scoreManager.AddScore(new Score("elbaz", 66));
+        //scoreManager.AddScore(new Score("eran", 6));
+        //scoreManager.AddScore(new Score("elbaz", 66));
 
-        var scores = scoreManager.GetHighScores().ToArray();
-        for (int i = 0; i <scores.Length; i++)
-        {
-            var row = Instantiate(rowUi, transform).GetComponent<RowUi>();
-            row.Rank.text = (i + 1).ToString();
-            row.Name.text = scores[i].name;
-            row.Score.text = scores[i].score.ToString();
-        }
+        
         
     }
 
@@ -28,5 +22,20 @@ public class ScoreUi : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetupScoreUi()
+    {
+        var scores = scoreManager.GetHighScores().ToArray();
+        if (scores == null) return;
+        for (int i = 0; i < 7; i++)
+        {
+            if (i >= scores.Length) break;
+            GameObject row = GameObject.Instantiate(rowUi, this.gameObject.GetComponent<RectTransform>());
+            var rowScript = row.GetComponent<RowUi>();
+            rowScript.Rank.text = (i + 1).ToString();
+            rowScript.Name.text = scores[i].name;
+            rowScript.Score.text = scores[i].score.ToString();
+        }
     }
 }

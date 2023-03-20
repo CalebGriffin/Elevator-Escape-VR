@@ -7,37 +7,42 @@ using System.Linq;
 
 public class ScoreManager : MonoBehaviour
 {
-    private string url = "https://getpantry.cloud/apiv1/pantry/55c7d78d-cf78-44eb-b4c8-b26590c19e12/basket/EEVR";
+    private string urlOLD = "https://getpantry.cloud/apiv1/pantry/55c7d78d-cf78-44eb-b4c8-b26590c19e12/basket/EEVR";
+    private const string url = "https://api.jsonbin.io/v3/b/64187542c0e7653a058b4774";
+    private const string masterKey = "$2b$10$8XZpgl/oBCb6HAE9UiLnb.PfuEGElShOI530PJiWx/i7Pea0uVcVm";
+
+    [SerializeField] private ScoreUi scoreUi;
 
     void Start() 
     {
+        AddScore(new Score("eran", 6));
+        AddScore(new Score("elbaz", 66));
+
+        StartCoroutine(SaveScores(url));
+
         // Get the save data from the internet
-        StartCoroutine(GetScores(url));
+        //StartCoroutine(GetScores(url));
     }
    
-   public IEnumerable<Score> GetHighScores()
-   {
+    public IEnumerable<Score> GetHighScores()
+    {
         return GVar.Instance.ScoreData.scores.OrderByDescending(x => x.score);
-   }
+    }
 
-//*
-//old code
-   public void AddScore(Score score) //a
-   {
+
+    public void AddScore(Score score) //a
+    {
+        print("adding score: " + score.name);
         // Add score param passed in to the Gvar score data list
         GVar.Instance.ScoreData.scores.Add(score);
-   }
+    }
 
-    //private void OnDestroy() {
-      //SaveScore();  
-   // }
-//*
     IEnumerator GetScores(string url) //Get the score
     {
-
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             webRequest.SetRequestHeader("Content-Type", "application/json");
+            webRequest.SetRequestHeader("X-Master-key", masterKey);
             yield return webRequest.SendWebRequest();
 
             string[] pages = url.Split('/');
@@ -49,25 +54,25 @@ public class ScoreManager : MonoBehaviour
                 yield break;
             }
             string textToParse = webRequest.downloadHandler.text;
+            print(textToParse);
             GVar.Instance.ScoreData = JsonUtility.FromJson<ScoreData>(textToParse);
         }
-         
-        // Get the score data class
-        // Convert that to json
-        
-         // Get the score data class
-        // Convert that to json
-        // Create upload and download buffers
-        // Send the request to upload
-        // Enjoy some cake 
+
+        scoreUi.SetupScoreUi();
     }
 
     public IEnumerator SaveScores(string url) //set the score
     {
-        
+        //! WHY IS THE JSON STRING EMPTY?
         string json = JsonUtility.ToJson(GVar.Instance.ScoreData);
-        UnityWebRequest webRequest = UnityWebRequest.Post(url, json);
+        foreach (Score score in GVar.Instance.ScoreData.scores)
+        {
+            print(score.name);
+        }
+        print(json);
+        UnityWebRequest webRequest = UnityWebRequest.Put(url, json);
         webRequest.SetRequestHeader("Content-Type", "application/json");
+        webRequest.SetRequestHeader("X-Master-key", masterKey);
         var jsonBytes = Encoding.UTF8.GetBytes(json);
         webRequest.uploadHandler = new UploadHandlerRaw(jsonBytes);
         webRequest.downloadHandler = new DownloadHandlerBuffer();
@@ -78,8 +83,9 @@ public class ScoreManager : MonoBehaviour
             Debug.Log("Web request error occurred");
             yield break;
         }
+        else
+        {
+            print("success");
+        }
     }
-
-
-   
 }

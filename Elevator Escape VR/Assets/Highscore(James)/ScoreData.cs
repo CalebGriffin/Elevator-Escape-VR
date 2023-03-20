@@ -8,11 +8,6 @@ using System.Linq;
 [Serializable]
 public class ScoreData
 {
-    public List<Score> scores;
-
-    public ScoreData()
-    {
-        scores= new List<Score>();
-    }
-
+    [SerializeField]
+    public List<Score> scores = new List<Score>();
 }
