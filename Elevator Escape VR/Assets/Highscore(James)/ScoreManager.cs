@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour
     {
         AddScore(new Score("eran", 6));
         AddScore(new Score("elbaz", 66));
+        //scoreUi.SetupScoreUi();
 
         StartCoroutine(SaveScores(url));
 
@@ -63,12 +64,7 @@ public class ScoreManager : MonoBehaviour
 
     public IEnumerator SaveScores(string url) //set the score
     {
-        //! WHY IS THE JSON STRING EMPTY?
         string json = JsonUtility.ToJson(GVar.Instance.ScoreData);
-        foreach (Score score in GVar.Instance.ScoreData.scores)
-        {
-            print(score.name);
-        }
         print(json);
         UnityWebRequest webRequest = UnityWebRequest.Put(url, json);
         webRequest.SetRequestHeader("Content-Type", "application/json");
