@@ -107,7 +107,7 @@ public class GameScript : MonoBehaviour
     public void Win()
     {
         // Add the score to the leaderboard
-        scoreManager.AddScore(new Score(GVar.Instance.PlayerName, 180 - Countdown));
+        scoreManager.AddScore(new Score(GVar.Instance.PlayerName, Countdown));
         scoreManager.SaveScores();
 
         // Display win text

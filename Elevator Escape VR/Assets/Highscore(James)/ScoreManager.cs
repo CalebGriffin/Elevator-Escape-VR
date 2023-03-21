@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
    
     public IEnumerable<Score> GetHighScores()
     {
-        return GVar.Instance.ScoreData.scores.OrderByDescending(s => s.score).Take(7).Reverse();
+        return GVar.Instance.ScoreData.scores.OrderByDescending(s => s.score).Take(7);
     }
 
 
