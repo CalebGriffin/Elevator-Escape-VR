@@ -66,22 +66,24 @@ public class ScoreManager : MonoBehaviour
     {
         string json = JsonUtility.ToJson(GVar.Instance.ScoreData);
         print(json);
-        UnityWebRequest webRequest = UnityWebRequest.Put(url, json);
-        webRequest.SetRequestHeader("Content-Type", "application/json");
-        webRequest.SetRequestHeader("X-Master-key", masterKey);
-        var jsonBytes = Encoding.UTF8.GetBytes(json);
-        webRequest.uploadHandler = new UploadHandlerRaw(jsonBytes);
-        webRequest.downloadHandler = new DownloadHandlerBuffer();
-        yield return webRequest.SendWebRequest();
+        using (UnityWebRequest webRequest = UnityWebRequest.Put(url, json))
+        {
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+            webRequest.SetRequestHeader("X-Master-key", masterKey);
+            var jsonBytes = Encoding.UTF8.GetBytes(json);
+            webRequest.uploadHandler = new UploadHandlerRaw(jsonBytes);
+            webRequest.downloadHandler = new DownloadHandlerBuffer();
+            yield return webRequest.SendWebRequest();
 
-        if (webRequest.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.Log("Web request error occurred");
-            yield break;
-        }
-        else
-        {
-            print("success");
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.Log("Web request error occurred");
+                yield break;
+            }
+            else
+            {
+                print("success");
+            }
         }
     }
 }
