@@ -15,6 +15,8 @@ public class GVar : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public string PlayerName = "";
+
     [SerializeField] private List<QuestionData> allQuestions = new List<QuestionData>();
     public List<QuestionData> AllQuestions => allQuestions;
 
@@ -23,7 +25,7 @@ public class GVar : MonoBehaviour
 
     public string[] ChosenAnswers;
 
-    public QuestionData.Difficulty ChosenDifficulty;
+    public QuestionData.Difficulty ChosenDifficulty = QuestionData.Difficulty.D;
 
     public int QuestionsAnswered = 0;
 

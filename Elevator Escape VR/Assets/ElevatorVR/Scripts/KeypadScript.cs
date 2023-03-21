@@ -5,6 +5,7 @@ using TMPro;
 
 public class KeypadScript : MonoBehaviour
 {
+    [SerializeField] private GameScript gameScript;
 
     [SerializeField] private TextMeshProUGUI KeypadSegment;
 
@@ -48,7 +49,8 @@ public class KeypadScript : MonoBehaviour
             if (GVar.Instance.QuestionsAnswered == 3)
             {
                 // The player has answered all 3 questions correctly and the game is over.
-                // TODO: End the game by opening the elevator doors.
+                // TODO: End the game by opening the elevator door.
+                gameScript.Win();
             }
             else
             {

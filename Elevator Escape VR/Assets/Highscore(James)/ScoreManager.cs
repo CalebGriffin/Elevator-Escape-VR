@@ -15,19 +15,13 @@ public class ScoreManager : MonoBehaviour
 
     void Start() 
     {
-        AddScore(new Score("eran", 6));
-        AddScore(new Score("elbaz", 66));
-        //scoreUi.SetupScoreUi();
-
-        StartCoroutine(SaveScores(url));
-
         // Get the save data from the internet
-        //StartCoroutine(GetScores(url));
+        StartCoroutine(GetScores(url));
     }
    
     public IEnumerable<Score> GetHighScores()
     {
-        return GVar.Instance.ScoreData.scores.OrderByDescending(x => x.score);
+        return GVar.Instance.ScoreData.scores.OrderByDescending(s => s.score).Take(7).Reverse();
     }
 
 
@@ -60,6 +54,11 @@ public class ScoreManager : MonoBehaviour
         }
 
         scoreUi.SetupScoreUi();
+    }
+
+    public void SaveScores()
+    {
+        StartCoroutine(SaveScores(url));
     }
 
     public IEnumerator SaveScores(string url) //set the score

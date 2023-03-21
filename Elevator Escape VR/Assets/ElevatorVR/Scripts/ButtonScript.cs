@@ -11,7 +11,7 @@ public class ButtonScript : MonoBehaviour
     private Transform Button;
     private GameObject Text;
 
-    [SerializeField] private UnityEvent pressEvent;
+    [SerializeField] public UnityEvent pressEvent;
 
     // Start is called before the first frame update
     void Start()

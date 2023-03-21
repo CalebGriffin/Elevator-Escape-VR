@@ -28,9 +28,8 @@ public class ScoreUi : MonoBehaviour
     {
         var scores = scoreManager.GetHighScores().ToArray();
         if (scores == null) return;
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < scores.Length; i++)
         {
-            if (i >= scores.Length) break;
             GameObject row = GameObject.Instantiate(rowUi, this.gameObject.GetComponent<RectTransform>());
             var rowScript = row.GetComponent<RowUi>();
             rowScript.Rank.text = (i + 1).ToString();
