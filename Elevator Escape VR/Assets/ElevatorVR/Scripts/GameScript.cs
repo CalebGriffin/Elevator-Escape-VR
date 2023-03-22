@@ -38,7 +38,18 @@ public class GameScript : MonoBehaviour
     // Right Wall Stuff Object
     [SerializeField] private GameObject rightWallStuff;
 
+    AudioSource audioScr;
+    [SerializeField] AudioClip FirstWarning;
+    [SerializeField] AudioClip SecondWarning;
+    [SerializeField] AudioClip ThirdWarning;
+    // Audio
+
     //Questions to fill out.
+
+    void start() 
+    {
+         audioScr = GetComponent<AudioSource>();
+    }
 
     private void ResetGame()
     {
@@ -57,7 +68,7 @@ public class GameScript : MonoBehaviour
 
         NameInput.Instance.Enter();
 
-        Countdown = 180;
+        Countdown = 600; // 10 MINUTES
         UpdateCountdownText();
 
         keypad.onClear();
@@ -147,16 +158,22 @@ public class GameScript : MonoBehaviour
                     elevatorLights.setFlicker(0.0f, 0.1f, 0.0f, 0.2f, Color.red, 0.1f);
                     break;
                 */
-                case 30:
+                case 30: 
                     elevatorLights.setFlicker(0.1f, 0.5f, 0.1f, 0.4f, Color.red, 0.2f);
+                    audioScr.clip = ThirdWarning;
+                    Debug.Log("Warning_3");
                     break;
                 
-                case 60:
+                case 120: //was set as 60
                     elevatorLights.setFlicker(1.25f, 3.75f, 0.25f, 0.625f, new Color(0.9f, 0.5f, 0.0f), 0.3f);
+                    audioScr.clip = SecondWarning;
+                    Debug.Log("Warning_2");
                     break;
                 
-                case 120:
+                case 300: //was set as 120 
                     elevatorLights.setFlicker(5.0f, 15.0f, 0.45f, 0.75f, Color.white, 0.4f);
+                    audioScr.clip = FirstWarning;
+                    Debug.Log("Warning_1");
                     break;
                 
                 default:
