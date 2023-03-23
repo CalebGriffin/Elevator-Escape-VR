@@ -38,6 +38,8 @@ public class GameScript : MonoBehaviour
     // Right Wall Stuff Object
     [SerializeField] private GameObject rightWallStuff;
 
+    [SerializeField] private GameObject keypadObject;
+
     AudioSource audioScr;
     [SerializeField] AudioClip FirstWarning;
     [SerializeField] AudioClip SecondWarning;
@@ -53,6 +55,8 @@ public class GameScript : MonoBehaviour
 
     private void ResetGame()
     {
+        QuestionPicker.Instance.QuestionSetup();
+
         // Disable the Leaderboards, difficulty selector, name input and start button
         leaderboardCanvas.SetActive(false);
         leftWallStuff.SetActive(false);
@@ -65,6 +69,8 @@ public class GameScript : MonoBehaviour
         // Enable the question canvases
         foreach (GameObject questionCanvas in questionCanvases)
             questionCanvas.SetActive(true);
+        
+        keypadObject.SetActive(true);
 
         NameInput.Instance.Enter();
 
@@ -108,11 +114,17 @@ public class GameScript : MonoBehaviour
         // Disable the question canvases
         foreach (GameObject questionCanvas in questionCanvases)
             questionCanvas.SetActive(false);
+        
+        keypadObject.SetActive(false);
 
         // Enable the Leaderboard, difficultly selector, name input and start button
         leaderboardCanvas.SetActive(true);
         leftWallStuff.SetActive(true);
         rightWallStuff.SetActive(true);
+
+        //Begin countdown of elevator tick, after cancelling any currently running coroutines.
+        if(ElevatorLoop != null)
+            StopCoroutine(ElevatorLoop);
     }
 
     public void Win()

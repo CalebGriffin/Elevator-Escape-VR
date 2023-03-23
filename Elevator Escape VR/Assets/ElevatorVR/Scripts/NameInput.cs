@@ -60,6 +60,7 @@ public class NameInput : MonoBehaviour
         }
 
         playerName += isCaps ? character.ToUpper() : character.ToLower();
+        UpdateNameText();
     }
 
     public void Backspace()

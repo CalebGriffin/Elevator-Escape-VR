@@ -6236,7 +6236,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3860297367077229958, guid: 61f754aa72ea64e43abffee41fc3edba, type: 3}
   m_PrefabInstance: {fileID: 3860297367640495450}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 766622035}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0da74b00401d56b458c32a4a5a065011, type: 3}
@@ -6325,6 +6325,107 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766108805}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &766622035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3860297367077229952, guid: 61f754aa72ea64e43abffee41fc3edba, type: 3}
+  m_PrefabInstance: {fileID: 3860297367640495450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &766622037
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766622035}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 4420647f054b2f54c8f28c5eb4c2696b, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &768539310
 GameObject:
   m_ObjectHideFlags: 0
@@ -8707,7 +8808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961059269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12529096, y: 2.033224, z: -1.1836004}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16001,10 +16102,14 @@ MonoBehaviour:
   - {fileID: 1418889423}
   - {fileID: 1389793617}
   - {fileID: 663346114}
-  questionCanvases: []
+  questionCanvases:
+  - {fileID: 181496873}
+  - {fileID: 1482414422}
+  - {fileID: 989253731}
   leaderboardCanvas: {fileID: 1153288678}
   leftWallStuff: {fileID: 480430247}
   rightWallStuff: {fileID: 555172315}
+  keypadObject: {fileID: 766622035}
   FirstWarning: {fileID: 8300000, guid: 0b4f2b84175909f43a4cd4a9f866f3db, type: 3}
   SecondWarning: {fileID: 8300000, guid: 044c39a6b833b4f4dbec32dde2178412, type: 3}
   ThirdWarning: {fileID: 8300000, guid: 247081a235c8f5b40a3912e17bbcd084, type: 3}
@@ -16071,7 +16176,7 @@ MonoBehaviour:
   allQuestions: []
   ChosenQuestions: []
   ChosenAnswers: []
-  ChosenDifficulty: 0
+  ChosenDifficulty: 3
   QuestionsAnswered: 0
   ScoreData:
     scores: []
@@ -23612,6 +23717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Keypad
       objectReference: {fileID: 0}
+    - target: {fileID: 3860297367077229952, guid: 61f754aa72ea64e43abffee41fc3edba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3860297367077229953, guid: 61f754aa72ea64e43abffee41fc3edba, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -23664,6 +23773,10 @@ PrefabInstance:
       propertyPath: WinSound
       value: 
       objectReference: {fileID: 8300000, guid: f1da2f9a9eedbd84f9b7b1dcd8ca08d1, type: 3}
+    - target: {fileID: 3860297367077229958, guid: 61f754aa72ea64e43abffee41fc3edba, type: 3}
+      propertyPath: audioScr
+      value: 
+      objectReference: {fileID: 766622037}
     - target: {fileID: 3860297367077229958, guid: 61f754aa72ea64e43abffee41fc3edba, type: 3}
       propertyPath: ButtonDing
       value: 

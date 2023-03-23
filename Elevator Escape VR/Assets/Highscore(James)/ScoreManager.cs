@@ -8,7 +8,7 @@ using System.Linq;
 public class ScoreManager : MonoBehaviour
 {
     private string urlOLD = "https://getpantry.cloud/apiv1/pantry/55c7d78d-cf78-44eb-b4c8-b26590c19e12/basket/EEVR";
-    private const string url = "https://api.jsonbin.io/v3/b/64187542c0e7653a058b4774";
+    private const string url = "https://api.jsonbin.io/v3/b/64187542c0e7653a058b4774?meta=false";
     private const string masterKey = "$2b$10$8XZpgl/oBCb6HAE9UiLnb.PfuEGElShOI530PJiWx/i7Pea0uVcVm";
 
     [SerializeField] private ScoreUi scoreUi;
@@ -84,5 +84,6 @@ public class ScoreManager : MonoBehaviour
                 print("success");
             }
         }
+        StartCoroutine(GetScores(url));
     }
 }

@@ -20,16 +20,28 @@ public class QuestionPicker : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void ResetQuestionVariables()
+    {
+        GVar.Instance.QuestionsAnswered = 0;
+    }
+
     // This will be called when the game starts.
     // Choose 3 random topics and 1 random question from each topic.
     // Then assigns the chosen questions and answers to the GVar script.
     public void QuestionSetup()
     {
+        ResetQuestionVariables();
+
+        //! Didn't work
+        /*
         // Pick 3 random topics ensuring that they are all different.
         QuestionData.Topic[] topics = new QuestionData.Topic[3];
         topics[0] = RandomTopic(null);
         topics[1] = RandomTopic(topics);
         topics[2] = RandomTopic(topics);
+        */
+
+        QuestionData.Topic[] topics = new QuestionData.Topic[] { QuestionData.Topic.Coordinates, QuestionData.Topic.Algebra, QuestionData.Topic.Geometry };
 
         // For each topic, pick a random question.
         QuestionData[] questions = new QuestionData[3];

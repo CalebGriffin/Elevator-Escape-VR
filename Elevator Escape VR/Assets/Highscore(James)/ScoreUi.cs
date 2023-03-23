@@ -26,6 +26,9 @@ public class ScoreUi : MonoBehaviour
 
     public void SetupScoreUi()
     {
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
+            
         var scores = scoreManager.GetHighScores().ToArray();
         if (scores == null) return;
         for (int i = 0; i < scores.Length; i++)
