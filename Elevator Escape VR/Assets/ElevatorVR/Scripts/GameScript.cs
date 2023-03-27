@@ -40,7 +40,7 @@ public class GameScript : MonoBehaviour
 
     [SerializeField] private GameObject keypadObject;
 
-    AudioSource audioScr;
+    [SerializeField] AudioSource audioScr;
     [SerializeField] AudioClip FirstWarning;
     [SerializeField] AudioClip SecondWarning;
     [SerializeField] AudioClip ThirdWarning;
@@ -95,6 +95,7 @@ public class GameScript : MonoBehaviour
     }
 
 
+    [ContextMenu("Start Game")]
     // This will be called to start the game
     public void StartGame()
     {
@@ -127,6 +128,7 @@ public class GameScript : MonoBehaviour
             StopCoroutine(ElevatorLoop);
     }
 
+    [ContextMenu("Win")]
     public void Win()
     {
         // Add the score to the leaderboard
