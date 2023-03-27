@@ -66,7 +66,7 @@ public class KeypadScript : MonoBehaviour
                 // The player has answered all 3 questions correctly and the game is over.
                 // TODO: End the game by opening the elevator door.
                 gameScript.Win();
-                audioScr.clip = WinSound;
+                audioScr.PlayOneShot(WinSound, 1F);
                 isEnabled = true;
             }
             else
@@ -79,7 +79,7 @@ public class KeypadScript : MonoBehaviour
         {
             // The player answered incorrectly.
             KeypadSegment.text = "Incorrect!";
-            audioScr.clip = BadSound;
+            audioScr.PlayOneShot(BadSound, 1F);
             StartCoroutine(WaitToClear());
         }
     }

@@ -172,19 +172,25 @@ public class GameScript : MonoBehaviour
                 */
                 case 30: 
                     elevatorLights.setFlicker(0.1f, 0.5f, 0.1f, 0.4f, Color.red, 0.2f);
-                    audioScr.clip = ThirdWarning;
+                    audioScr.PlayOneShot(ThirdWarning, 1F);
+                    //audioScr.clip = ThirdWarning;
+                    
                     Debug.Log("Warning_3");
+                    
                     break;
                 
                 case 120: //was set as 60
                     elevatorLights.setFlicker(1.25f, 3.75f, 0.25f, 0.625f, new Color(0.9f, 0.5f, 0.0f), 0.3f);
-                    audioScr.clip = SecondWarning;
+                    audioScr.PlayOneShot(SecondWarning, 1F);
+                    //audioScr.clip = SecondWarning;
                     Debug.Log("Warning_2");
+                    
                     break;
                 
                 case 300: //was set as 120 
                     elevatorLights.setFlicker(5.0f, 15.0f, 0.45f, 0.75f, Color.white, 0.4f);
-                    audioScr.clip = FirstWarning;
+                    //audioScr.clip = FirstWarning;
+                    audioScr.PlayOneShot(FirstWarning, 1F);
                     Debug.Log("Warning_1");
                     break;
                 
