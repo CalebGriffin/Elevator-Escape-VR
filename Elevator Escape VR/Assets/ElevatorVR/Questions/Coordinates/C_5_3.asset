@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: C_5_3
   m_EditorClassIdentifier: 
   questionImage: {fileID: 21300000, guid: c97db6d8310db41b7afd344716d5a20a, type: 3}
-  answer: 2.5,-0.5
+  answer: 4,4
   questionTopic: 0
   questionDifficulty: 0
