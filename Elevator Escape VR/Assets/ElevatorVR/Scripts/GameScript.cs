@@ -197,7 +197,7 @@ public class GameScript : MonoBehaviour
                     break;
                 
                 default:
-                    if(Countdown > 60)
+                    if(Countdown > 300)
                         elevatorLights.resetLights();
                     break;
             }

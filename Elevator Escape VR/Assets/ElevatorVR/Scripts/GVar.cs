@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class GVar : MonoBehaviour
 {
@@ -30,26 +29,4 @@ public class GVar : MonoBehaviour
     public int QuestionsAnswered = 0;
 
     public ScoreData ScoreData;
-
-    private void Start()
-    {
-        allQuestions.Clear();
-
-        string[] folderPaths = AssetDatabase.GetSubFolders("Assets/ElevatorVR/Questions");
-        foreach (string folderPath in folderPaths)
-        {
-            GetQuestionAssets(folderPath);
-        }
-    }
-
-    private void GetQuestionAssets(string folderPath)
-    {
-        string[] assetNames = AssetDatabase.FindAssets("t:QuestionData", new[] {folderPath});
-        foreach (string SOName in assetNames)
-        {
-            var SOpath = AssetDatabase.GUIDToAssetPath(SOName);
-            var questionData = AssetDatabase.LoadAssetAtPath<QuestionData>(SOpath);
-            allQuestions.Add(questionData);
-        }
-    }
 }
